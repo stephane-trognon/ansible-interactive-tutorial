@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Goffinet François
 
-RUN apt-get update && apt-get install -y rsyslog iputils-ping netbase net-tools openssh-server vim sudo curl python3-pip python3-dev \
+RUN apt-get update && apt-get install -y rsyslog iputils-ping netbase net-tools openssh-server vim sudo curl python3-pip python3-dev python3-apt \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip
