@@ -1,6 +1,6 @@
     - hosts: web
       tasks:
-        - name: Installs apache web server
+        - name: "Installs apache web server"
           apt:
             name: apache2
             state: present
