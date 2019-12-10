@@ -61,7 +61,7 @@ prompt {
     }
 }
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -118,7 +118,7 @@ prompt {
 
 "This is the end of this lesson!"
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

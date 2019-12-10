@@ -38,7 +38,7 @@ prompt {
 
 "We could have written the host list by hand, since we have only 2 of them. But we're hoping that the server will be very successful, and that we'll need a hundred of them. Thus, adding servers to the configuration or swapping some out boils down to adding or removing hosts from the `[web]` group."
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -89,7 +89,7 @@ prompt {
 
 "This is the end of this lesson!"
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

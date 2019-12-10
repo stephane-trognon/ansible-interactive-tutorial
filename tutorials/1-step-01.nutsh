@@ -6,9 +6,9 @@ clear_ws
 
 "Avant de continuer, vous avez besoin d'un inventaire. L'emplacement par défaut d'un tel fichier est `/etc/ansible/hosts`."
 
-"Vous pouvez configurer Ansible pour qu'il utilise un autre emplacement pour désigner ce fichier, avec une variable d'environnement (`ANSIBLE_HOSTS`) ou encore, par exemple, en utilisant l'option `-i` avec le binaire `ansible` en indiquant le chemin."
+"Vous pouvez configurer Ansible pour qu'il utilise un autre emplacement pour désigner ce fichier, avec une variable d'environnement (`ANSIBLE_HOSTS`) ou encore, par exemple, en utilisant l'option `-i` avec le binaire `ansible` en indiquant le chemin du fichier d'inventaire."
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect(" ")
@@ -32,7 +32,7 @@ prompt {
     }
 }
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -58,7 +58,7 @@ prompt {
 
 "Cette leçon est terminée !"
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

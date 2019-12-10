@@ -57,7 +57,7 @@ prompt {
 
 "Vous êtes maintenant prêt pour commencer la première leçon du tutoriel interactif sur Ansible !"
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

@@ -33,7 +33,7 @@ debian\n\t")
 
 "Grouping of course, leverages configuration mutualization."
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -55,7 +55,7 @@ print("\t
 [ubuntu]\n\t
 host0.example.org ansible_host=192.168.0.12 ansible_port=2222\n\t")
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -78,7 +78,7 @@ print("\t
 
 "This is the end of this lesson!"
 
-"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
