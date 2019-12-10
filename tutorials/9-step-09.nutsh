@@ -47,7 +47,7 @@ prompt {
 
 "Now that we have this nice farm of web servers. Let's turn it into a cluster by putting a load balancer in front of them in the next lesson."
 
-"This is the end of this lesson!"
+"C'est la fin de cette leçon."
 
 "Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
