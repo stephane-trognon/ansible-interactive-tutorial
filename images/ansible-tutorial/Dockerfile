@@ -1,4 +1,4 @@
-FROM goffinet/nutsh:2.0
+FROM goffinet/nutsh:latest
 
 RUN apk add --no-cache ansible openssh fping curl
 

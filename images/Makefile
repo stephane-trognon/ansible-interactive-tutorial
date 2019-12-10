@@ -1,5 +1,5 @@
 USER=goffinet
-TAG=2.0
+TAG=latest
 
 .DEFAULT_GOAL := all
 
