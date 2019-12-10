@@ -1,10 +1,20 @@
-lesson_name("Groups and variables")
+lesson_name("Groupes et variables")
 make_and_go_ws
 clear_ws
 
-"`Grouping hosts`"
+"`Regrouper des hôtes`"
 
-"Hosts in inventory can be grouped arbitrarily. For instance, you could have a `debian` group, a `web-servers` group, a `production` group, etc..."
+"Les hôtes dans un inventaire peuvent être groupés de manière arbitraire. Par exemple, vous pourriez avoir un groupe `debian`, un groupe `web-servers`, un groupe `production`, etc."
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
+
+"Un groupe est instancié par un nom entre crochet `[groupe]`. Ici plus bas le groupe `debian` dispose de trois hôtes :"
 
 print("\t
 [debian]\n\t
@@ -12,13 +22,21 @@ host0.example.org\n\t
 host1.example.org\n\t
 host2.example.org\n\t")
 
-"This can even be expressed shorter:"
+"Mais on aurait pu l'exprimer de manière plus courte :"
 
 print("\t
 [debian]\n\t
 host[0:2].example.org\n\t")
 
-"If you wish to use child groups, just define a `[groupname:children]` and add child groups in it. For instance, let's say we have various flavors of linux running, we could organize our inventory like this:"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
+
+"Vous pouvez définir des groupes 'enfants' avec une section `[groupname:children]` qui reprend ses enfants. Par exemple, pour organiser les différentes variantes Linux, vous pourriez faire ceci dans votre inventaire :"
 
 print("\t
 [ubuntu]\n\t
@@ -31,7 +49,7 @@ host[1:2].example.org\n\t
 ubuntu\n\t
 debian\n\t")
 
-"Grouping of course, leverages configuration mutualization."
+"Le regroupement permet ainsi de tirer parti de la mutualisation de la configuration."
 
 "Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
@@ -41,15 +59,15 @@ prompt {
     }
 }
 
-"`Setting variables`"
+"`Configurer des variables`"
 
-"You can assign variables to hosts in several places: inventory file, host vars files, group vars files, etc..."
+"Vous pouvez assigner des variables aux hôtes à partir de différents endroits : le fichier d'inventaire, dans des fichiers `host_vars` ou `group_vars`, sur la ligne de commande, ..."
 
-"I usually set most of my variables in group/host vars files (more on that later). However, I often use some variables directly in the inventory file, such as `ansible_host` which sets the IP address for the host. Ansible by default resolves hosts' name when it attempts to connect via SSH. But when you're bootstrapping a host, it might not have its definitive ip address yet. `ansible_host` comes in handy here."
+"Il est courant de définir les variables des hôtes dans les fichiers `host_vars` ou `group_vars` (on le verra plus loin). Mais on peut aussi les définir directement dans l'inventaire comme les variables `ansible_host` ou `ansible_user`."
 
-"When using `ansible-playbook` command (not the regular `ansible` command), variables can also be set with `--extra-vars` (or `-e`) command line switch. `ansible-playbook` command will be covered in the next step."
+"Quand on utilise la commande `ansible-playbook` (pas la commande `ansible`), les variables peuvent être définies avec l'option `--extra-vars` (or `-e`). La commande `ansible-playbook` sera abordée lors de la prochaine leçon."
 
-"`ansible_port`, as you can guess, has the same function regarding the ssh port ansible will try to connect at."
+"La variable `ansible_port` comme vous pouvez le supposer définit le port SSH qui sera utilisé par Ansible pour se connecter à l'hôte."
 
 print("\t
 [ubuntu]\n\t
@@ -63,20 +81,20 @@ prompt {
     }
 }
 
-"Ansible will look for additional variables definitions in group and host variable files. These files will be searched in directories `group_vars` and `host_vars`, below the directory where the main inventory file is located."
+"Ansible cherchera des définitions de variables supplémentaires dans les fichiers de variables de groupe et d'hôte. Ces fichiers seront recherchés dans les dossiers `group_vars' et `host_vars' à l'intérieur du dossier où se trouve le fichier d'inventaire principal."
 
-"The files will be searched by name. For instance, using the previously mentioned inventory file, `host0.example.org` variables will be searched in those files:"
+"Ces fichiers sont examinés selon leur nom. Par exemple, avec l'inventaire précédent, les variables de l'hôtes `host0.example.org` seront recherchées dans ces fichiers :"
 
 print("\t
 - group_vars/linux\n\t
 - group_vars/ubuntu\n\t
 - host_vars/host0.example.org\n", "cyan")
 
-"It doesn't matter if those files do not exist, but if they do, ansible will use them."
+"Il importe peu que ces fichiers existent mais si c'est le cas, il seront utilisés par Ansible."
 
-"Now that we know the basics of modules, inventories and variables, let's explore the real power of Ansible with playbooks."
+"Maintenant que nous avons une connaissance de base des modulesn, des inventaires et des variables, nous pouvons explorer la réelle puissance de Ansible avec les livres de jeu (playbooks)."
 
-"This is the end of this lesson!"
+"C'est la fin de cette leçon."
 
 "Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
