@@ -1,4 +1,7 @@
     - hosts: web
       tasks:
         - name: Installs apache web server
-          apt: pkg=apache2 state=present update_cache=true
+          apt:
+            name: apache2
+            state: present
+            update_cache: true
