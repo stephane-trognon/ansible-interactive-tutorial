@@ -34,10 +34,9 @@ prompt {
     }
 }
 
-"Ces hôtes sont déjà approvisionnés avec la clé SSH du noeud sur lequel vous êtes. Vous ne devriez alors pas vous soucier de la configuration des clés de configuration. Vous pouvez vous y connecter directement en SSH avec le compte root"
+"Ces hôtes sont déjà approvisionnés avec la clé SSH du noeud sur lequel vous êtes. Vous ne devriez alors pas vous soucier de la configuration des clés de configuration. Vous pouvez vous y connecter directement en SSH avec le compte `root`."
 
-"Veuillez tenter de vous conneceter sur host0.example.org et n'oubliez pas de revenir ici (exécutez *exit*)"
-"Try it and don't forget to get back to continue (run *exit* once you got there):"
+"Veuillez tenter de vous conneceter sur host0.example.org et n'oubliez pas de revenir ici (exécutez *exit*)."
 
 "*ssh host0.example.org*"
 
