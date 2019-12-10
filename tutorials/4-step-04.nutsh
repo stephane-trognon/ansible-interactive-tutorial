@@ -3,15 +3,15 @@ make_and_go_ws
 clear_ws
 run(`cp /tutorials/files/step-4/hosts hosts`)
 
-"`Ansible playbooks`"
+"`Playbooks Ansible`"
 
-"Playbook concept is very simple: it's just a series of ansible commands (tasks), like the ones we used with the `ansible` CLI tool. These tasks are targeted at a specific set of hosts/groups."
+"Un Playbook (livre de jeux) est un concept simple : une liste de commandes ansible (des tâches, `tasks`) comme celles utilisées par la ligne de commande `ansible`. Ces tâches ont pour cîbles un ensemble spcécifique d'hôtes ou de groupes d'hôtes."
 
-"The necessary files for this step should have appeared magically and you don't even have to type them."
+"Les fichiers nécessaires pour cette leçon devraient apparaître comme par magie de telle sorte que vous n'ayez pas besoin de les réécrire."
 
-"`Apache example (a.k.a. Ansible's \"Hello World!\")`"
+"`Exemple Apache (a.k.a. Ansible's \"Hello World!\")`"
 
-"Inspect the inventory file that we prepared for this lesson by running the following command:"
+"Examinons le fichier d'inventaire que nous avons préparé pour cette leçon en exécutant la commande suivante :"
 
 "*cat hosts*"
 
@@ -19,16 +19,16 @@ prompt {
     if success && command == "cat hosts" {
         expect ("cat hosts")
         ""
-        "Note: remember you can (and in our exercise we do) use `ansible_host` to set the real IP of the host. In the real hosts file, we also have `ansible_user=root` to cope with potential different ansible default configurations."
+        "Note: souvenez-vous que vous devriez utiliser les variables `ansible_host` et `ansible_user` dans la réalité."
         break
     }
 }
 
 run(`cp /tutorials/files/step-4/apache.yml apache.yml`)
 
-"Lets build a playbook that will install apache on machines in the `web` group."
+"Nous vous proposons d'écrire un playbook qui installe apache sur les machines du groupe `web`."
 
-"I've just copied a playbook file into the current directory, run the following to see the content:"
+"J'ai copié ce fichier pour vous dans le dossier courant, voyez son contenu en exécutant la commande suivante :"
 
 "*cat apache.yml*"
 
@@ -36,18 +36,19 @@ prompt {
     if success && command == "cat apache.yml" {
         expect ("cat apache.yml")
         ""
-        "We just need to say what we want to do using the right ansible modules. Here, we're using the `apt` module (http://docs.ansible.com/ansible/latest/apt_module.html) that can install debian packages. We also ask this module to update the package cache."
+        "Il nous suffit de dire ce que nous voulons faire en utilisant les bons modules. Ici, nous utilisons le module `apt` (http://docs.ansible.com/ansible/latest/apt_module.html) qui peut installer les paquets debian. Nous demandons également à ce module de mettre à jour le cache de paquets."
 
-        "We also added a name for this task. While this is not necessary, it's very informative when the playbook runs, so it's highly recommended."
+        "Nous avons aussi ajouté un nom pour cette tâche. Bien que ce ne soit pas nécessaire, c'est très instructif quand le livre de jeu fonctionne, donc c'est très fortement recommandé."
 
-        "All in all, this was quite easy!"
+        "Dans l'ensemble, c'était assez facile !"
+
         break
     }
 }
 
-"We will now continue with the command below. Here, `hosts` is the inventory file, `-l` limits the run only to `host1.example.org` and `apache.yml` is our playbook."
+"Nous allons maintenant continuer avec la commande ci-dessous. Ici, `hosts` est le fichier d'inventaire, `-l` limite l'exécution à `host1.example.org` et `apache.yml` est notre playbook."
 
-"Now run the playbook with the following command: "
+"Maintenant, veuillez exécuter le playbook avec la commande suivante :"
 
 "*ansible-playbook -i hosts -l host1.example.org apache.yml*"
 
@@ -55,7 +56,7 @@ prompt {
     if success && command == "ansible-playbook -i hosts -l host1.example.org apache.yml" {
         expect ("ansible-playbook -i hosts -l host1.example.org apache.yml")
 
-        "Great! Let's analyse the output one line at a time."
+        "Bien ! Examinons cette sortie ligne par ligne."
 
         break
     }
@@ -73,30 +74,65 @@ print ("\t
 PLAY [web] ********************* \n
 ")
 
-"Ansible tells us it's running the play on hosts `web`. A play is a suite of ansible instructions related to a host. If we'd have another `-host: blah` line in our playbook, it would show up too (but after the first play has completed)."
+"En premier lieu, Ansible nous indique qu'il exécute le jeu sur les hôtes `web`. Un jeu est la suite des instructions relatives à l'hôte. Si nous avions un autre hôte dans ce groupe, il apparaîtrait aussi."
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
 
 print ("\t
 GATHERING FACTS ********************* \n\t
 ok: [host1.example.org]\n\t
 \n")
 
-"Remember when we used the `setup` module? Before each play, ansible runs it on necessary hosts to gather facts. If this is not required because you don't need any info from the host, you can just add `gather_facts: no` below the host entry (same level as `tasks:`)."
+"Avez-vous le souvenir de notre précédente leçon avec le module `setup` ? Avec chaque jeu, Ansible collecte par défaut les facts. Quand cela n'est pas nécessaire, on peut ajouter l'entrée `gather_facts: no` à hauteur de l'entrée `hosts:` et de l'entrée `tasks:`."
+
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
 
 print ("\t
 TASK: [Installs apache web server] ********************* \n\t
 changed: [host1.example.org]\n\t
 \n")
 
-"Next, the real stuff: our (first and only) task is run, and because it says `changed`, we know that it changed something on `host1.example.org`."
+"Ensuite, l'élément concret, la seule et unique tâche qui est exéxutée et un retour nous indiquant `changed` supposant que quelque chose a changé sur  `host1.example.org`."
+
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
 
 print ("\t
 PLAY RECAP ********************* \n\t
 host1.example.org              : ok=2    changed=1    unreachable=0    failed=0 \n\t
 \n")
 
-"Finally, ansible outputs a recap of what happened: two tasks have been run and one of them changed something on the host (our apache task, setup module doesn't change anything)."
+"Enfin, La sortie de Ansible offre un récupitulatif de ce qui s'est passé : deux tâches ont été exécutées (dont le `fact_gathering` implicite) et l'une d'elle a changé quelque chose sur l'hôte cible."
 
-"Now let's try to run it again and see what happens:"
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
+
+"Maintenant, recommençons la commande et soyons attentif à ce qui se passe :"
 
 "*ansible-playbook -i hosts -l host1.example.org apache.yml*"
 
@@ -104,17 +140,25 @@ prompt {
     if success && command == "ansible-playbook -i hosts -l host1.example.org apache.yml" {
         expect ("ansible-playbook -i hosts -l host1.example.org apache.yml")
 
-        "Note the changed field, it is now `0`"
+        "Remarquons le champ `changed` est maintenant à `0`."
 
         break
     }
 }
 
-"This is absolutely normal and is one of the core feature of ansible: the playbook will act only if there is something to do. It's called `idempotency`, and means that you can run your playbook as many times as you want, you will always end up in the same state (well, unless you do crazy things with the `shell` module of course, but this is beyond ansible's control)."
+"Cela est parfaitement normal et c'est une fonctionnalité principale de Ansible. Le Playbook n'agira que si cela est nécessaire. On appelle cela l''idempotence'. Un livre de jeux devrait viser un état, quel que soit le nombre de fois que l'on exécute ce livre de jeu."
 
-"`Refining things`"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
 
-"Sure our playbook can install apache server, but it could be a bit more complete. It could add a virtualhost, ensure apache is restarted. It could even deploy our web site from a git repository. Let's make it so."
+"`Affiner les choses`"
+
+"Assurément, notre playbook peut installer un serveur apache, mais il pourrait être un peu plus complet. Il pourrait ajouter un virtualhost, s'assurer qu'apache est redémarré. Il pourrait même déployer notre site web à partir d'un dépôt git. Faisons en sorte qu'il en soit ainsi."
 
 "C'est la fin de cette leçon."
 
