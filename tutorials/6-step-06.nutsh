@@ -1,21 +1,21 @@
-lesson_name("Playbooks and failures")
+lesson_name("Playbooks et les erreurs")
 make_and_go_ws
 clear_ws
 run(`cp /tutorials/files/step-6/hosts hosts`)
 
-"`Restarting when config is correct`"
+"`Redémarrer quand la configuration est correcte.`"
 
-"We've installed apache, pushed our virtualhost and restarted the server. But what if we wanted the playbook to restart the server only if the config is correct? Let's do that."
+"Nous avons installé apache, nous avons poussé le fichier de configuration virtualhost et nous avons redémarré le serveur. Mais comment faire en sorte de redémarrer le serveur seulement quand la configuration est corecte ? Voyons ce que nous pouvons faire."
 
-"`Bailing out when things go wrong`"
+"`Sortir quand les choses tournent mal`"
 
-"Ansible has a nifty feature: it will stop all processing if something goes wrong. We'll take advantage of this feature to stop our playbook if the config file is not valid."
+"Ansible a une fonctionnalité intéresante : il arrête tout processus quand quelque chose tourne mal. L'avantage est de ne pas aller plus loin quand une erreur est rencontrée."
 
 run(`cp -r /tutorials/files/step-6/files files`)
 
-"I've just changed our awesome-app virtual host configuration file and broken it."
+"J'ai mis à jour le fichier `awesome-app` du fichier de configuration du virtualhost et j'y ai introduit une erreur."
 
-"See the broken config by running the following command:"
+"Voyez vous-même l'erreur en exécutant la commande suivante :"
 
 "*cat files/awesome-app*"
 
@@ -23,18 +23,19 @@ prompt {
     if success && command == "cat files/awesome-app" {
         expect ("cat files/awesome-app")
         ""
-        "RocumentDoot instead of DocumentRoot :)"
+        "`RocumentDoot` au lieu de `DocumentRoot` :)"
         break
     }
-} 
+}
 
-"As said, when a task fails, processing stops. So we'll ensure that the configuration is valid before restarting the server. We also start by adding our virtualhost `before` removing the default virtualhost, so a subsequent restart (possibly done directly on the server) won't break apache."
+"Comme déjà expliqué, quand une tâche échoue, le processus s'arrête (pour cet hôte en échec). Nous allons nous assurer que la configuration est valide avant de redémarrer le serveur. Nous commençons avant tout par ajouter l'hôte virtuel avant de supprimer le virtualhost par défaut et puis un redémarrage est envisagé sans 'casser' apache."
 
-"Note that we should have done this in the first place. Since we ran our playbook already, the default virtualhost is already deactivated. Nevermind: this playbook might be used on other innocent hosts, so let's protect them."
+
+"Notez que nous aurions dû le faire dès le départ. Comme nous avons déjà lancé notre playbook, le virtualhost par défaut est déjà désactivé. Peu importe : ce livre de jeu pourrait être utilisé sur d'autres hôtes innocents, alors protégeons-les."
 
 run(`cp /tutorials/files/step-6/apache.yml apache.yml`)
 
-"Inspect our playbook by running:"
+"Examinons ce playbook en exécutant la commande suivante :"
 
 "*cat apache.yml*"
 
@@ -44,9 +45,9 @@ prompt {
         ""
         break
     }
-} 
+}
 
-"Here we go! Run the following command to execute our playbook:"
+"Nous y sommes. Exécutons le playbook :"
 
 "*ansible-playbook -i hosts -l host1.example.org apache.yml*"
 
@@ -54,14 +55,14 @@ prompt {
     if ! success && command == "ansible-playbook -i hosts -l host1.example.org apache.yml" {
         expect ("ansible-playbook -i hosts -l host1.example.org apache.yml")
         ""
-        "As you can see since `apache2ctl` returns with an exit code of 1 when it fails, ansible is aware of it and stops processing. Great!" 
+        "Comme vous pouvez le constater `apache2ctl` rend un code de retour `\"rc\": 1` quand il échoue. Ansible est à l'écoute de ce retour et arrête de lire le playbook. Très bien, on avance."
         break
     }
-} 
+}
 
-"Mmmh, not so great in fact... Our virtual host has been added anyway. Any subsequent apache restart will complain about our config and bail out. So we need a way to catch failures and revert back."
+"Mmmh, ce n'est pas terrible en réalité ... Notre hôte virtuel a quand même été ajouté. Tout redémarrage ultérieur d'apache se plaindra de notre configuration et arrêtera de fonctionner. Nous avons donc besoin d'un moyen de détecter les échecs et de revenir en arrière."
 
-"Lets do that in the next lesson."
+"Ce sera le sujet de notre prochaine leçon."
 
 "C'est la fin de cette leçon."
 
