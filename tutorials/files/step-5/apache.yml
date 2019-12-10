@@ -22,7 +22,7 @@
             state: absent
           notify:
             - restart apache
-        - name: Activates our virtualhost
+        - name: "Activates our virtualhost"
           file:
             src: /etc/apache2/sites-available/awesome-app.conf
             dest: /etc/apache2/sites-enabled/awesome-app.conf
@@ -30,7 +30,7 @@
           notify:
             - restart apache
       handlers:
-        - name: restart apache
+        - name: "restart apache"
           service:
             name: apache2
             state: restarted
