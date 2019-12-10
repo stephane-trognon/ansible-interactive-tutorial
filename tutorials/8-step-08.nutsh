@@ -1,31 +1,54 @@
-lesson_name("Git module")
+lesson_name("Module Git")
 make_and_go_ws
 clear_ws
 run(`cp /tutorials/files/step-8/hosts hosts`)
 run(`cp -r /tutorials/files/step-8/files files`)
 
-"`Deploying our website from git`"
+"`Déployer notre site Web à partir de Git`"
 
-"We've installed apache, pushed our virtualhost and restarted the server safely. Now we'll use the git module to deploy our application."
+"Nous avons installé apache, poussé notre virtualhost et enfin redémarré notre serveur de manière sécurisée. Maintenant, nous allons déployer notre application avec le module `git`."
 
-"`The git module`"
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
 
-"Well, this is a kind of break. Nothing necessarily new here. The `git` module is just another module. But we'll try it out just for fun. And we'll be familiar with it when it comes to `ansible-pull` later on."
+"`Le module Git`"
 
-"Our virtualhost is set, but we need a few changes to finish our deployment. First, we're deploying a PHP application. So we need to install the `libapache2-mod-php5` package. Second, we have to install `git` since the git module (used to clone our application's git repository) uses it."
+"Cette leçon est une sorte de 'break'. Rien n'est crucial dans cette activité. Le module `git` est juste un autre module parmi les autres que l'on va essayer et avec lequel nous serons familier quand il faudra l'utiliser plus tard avec la commande `ansible-pull`."
 
-"We could do it like this:"
+"Notre hôte virtuel est configuré mais quelques modifications sont nécessaires pour terminer la configuration du déploiement. D'abord, nous avons besoin d'installer le paquet `libapache2-mod-php5` car nous déployons une application PHP. Ensuite, nous avons à installer git car il est utilisé par le module `git` afin de cloner notre application."
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
+
+"On pourrait tenter ceci pour chaque paquet :"
 
 print("\t
 ...\n\t
 - name: Installs apache web server\n\t
-  apt: pkg=apache2 state=present update_cache=true\n\t
+  apt:\n\t
+    name: apache2\n\t
+    state: present\n\t
+    update_cache: true\n\t
 \n\t
 - name: Installs php module\n\t
-  apt: pkg=libapache2-mod-php state=present\n\t
+  apt:\n\t
+    pkg: libapache2-mod-php\n\t
+    state: present\n\t
 \n\t
 - name: Installs git\n\t
-  apt: pkg=git state=present\n\t
+  apt:\n\t
+    pkg: git\n\t
+    state: present\n\t
 ...\n\t
 ")
 
@@ -37,22 +60,54 @@ prompt {
     }
 }
 
-"but Ansible provides a more readable way to write this. Ansible can loop over a series of items, and use each item in an action like this:"
+"Aussi Ansible peut boucler (`loop:`) sur les objets d'une liste (`{{ item }}`) :"
 
 print("\t
 ...\n\t
 - name: Installs necessary packages\n\t
-  apt: pkg={{ item }} state=latest\n\t
-  with_items:\n\t
+  apt:\n\t
+    name: {{ item }}\n\t
+    state: latest\n\t
+  loop:\n\t
     - apache2\n\t
     - libapache2-mod-php\n\t
     - git\n\t
 ...\n\t
 ")
 
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
+
+"Mais heureusement la bonne pratique veut que l'on puisse fournir une liste à l'argument `name:` du module `apt`."
+
+print("\t
+...\n\t
+- name: Installs necessary packages\n\t
+  apt:
+    name:\n\t
+      - apache2\n\t
+      - libapache2-mod-php\n\t
+      - git\n\t
+    state: latest\n\t
+...\n\t
+")
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
+
 run(`cp /tutorials/files/step-8/apache.yml apache.yml`)
 
-"Now, first inspect our playbook by running:"
+"Allons examiner ce livre de jeu :"
 
 "*cat apache.yml*"
 
@@ -64,7 +119,7 @@ prompt {
     }
 }
 
-"Here we go! Run the following command to execute our playbook:"
+"Très bien. Nous pouvons exécuter le playbook avec la commande suivante :"
 
 "*ansible-playbook -i hosts -l host1.example.org apache.yml*"
 
@@ -72,15 +127,15 @@ prompt {
     if success && command == "ansible-playbook -i hosts -l host1.example.org apache.yml" {
         expect ("ansible-playbook -i hosts -l host1.example.org apache.yml")
         ""
-        say("You can now browse to `http://127.0.0.1:" + run (`echo $(($HOSTPORT_BASE+1))`) + "`, and it should display a Bill Murray, and the server hostname.")
-        say("! Remember our hosts are docker containers and `port 80 of host1.example.org` is exposed to `port " +  run (`echo $(($HOSTPORT_BASE+1))`) + " of your local machine`")
+        say("Vous pouvez vous rendre sur l'URL `http://127.0.0.1:" + run (`echo $(($HOSTPORT_BASE+1))`) + "`, et vous devriez voir Bill Murray, et le hostname du serveur.")
+        say("! Souvenez-vous que nos hôtes sont des conteneurs Docker et que `le port 80 de host1.example.org` est exposé sur `le port " +  run (`echo $(($HOSTPORT_BASE+1))`) + " de votre machine locale`")
         break
     }
 }
 
-"Note the `tags:` deploy line allows you to execute just a part of the playbook. Let's say you push a new version for your site. You want to speed up and execute only the part that takes care of deployment. Tags allows you to do it. Of course, \"deploy\" is just a string, it doesn't have any specific meaning and can be anything."
+"Note : la directive `tags: ['deploy']` vous permet d'exécuter juste les tâches qui dispose de cette 'étiquette'. Cette fonctionnalité permet d'exécuter le playbook en partie seulement sur les tâches ainsi identifiées comme par exemple la mise à jour du site."
 
-"Let's see how to use it, run the following command:"
+"Voyons comment utiliser ce 'tag' `deploy` avec la commande suivante."
 
 "*ansible-playbook -i hosts -l host1.example.org apache.yml -t deploy*"
 
@@ -88,12 +143,12 @@ prompt {
     if success && command == "ansible-playbook -i hosts -l host1.example.org apache.yml -t deploy" {
         expect ("ansible-playbook -i hosts -l host1.example.org apache.yml -t deploy")
         ""
-        "Cool!"
+        "Super !"
         break
     }
 }
 
-"Ok, let's deploy another web server in the next lesson."
+"Très bien. Nous déploierons un second serveur Web dans la prochaine leçon."
 
 "C'est la fin de cette leçon."
 
