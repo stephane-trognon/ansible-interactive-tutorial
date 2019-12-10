@@ -1,6 +1,6 @@
 FROM goffinet/nutsh:latest
 
-RUN apk add --no-cache ansible openssh fping curl
+RUN apk add --no-cache openssh fping curl ansible
 
 WORKDIR /root
 
