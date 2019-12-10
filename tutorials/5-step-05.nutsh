@@ -1,21 +1,21 @@
-lesson_name("Playbooks, pushing files on nodes")
+lesson_name("Playbooks, pousser des fichiers sur les noeuds")
 make_and_go_ws
 clear_ws
 run(`cp /tutorials/files/step-5/hosts hosts`)
 
-"`Refining apache setup`"
+"`Affiner la configuration d'apache`"
 
-"We've installed apache, now lets set up our virtualhost."
+"Nous avons installé apache, nous vous proposons de configurer un virtualhost."
 
-"`Refining the playbook`"
+"`Affiner le playbook`"
 
-"We need just one virtualhost on our server, but we want to replace the default one with something more specific. So we'll have to remove the current (presumably `default`) virtualhost, send our virtualhost, activate it and restart apache."
+"Nous avons juste besoin d'un seul hôte virtuel sur notre serveur. Mais nous voulons remplacer les défauts par des éléments plus spécifiques. Concrètement, nous devons supprimer la configuration par défaut, envoyer notre fichier de configuration virtualhost, l'activer et redémarrer apache."
 
 run(`cp -r /tutorials/files/step-5/files files`)
 
-"I've just created a directory called `files`, and added our virtualhost configuration for host1.example.org, which we'll call `awesome-app`"
+"Je viens juste de créer un dossier nommé `files` et j'ai ajouté la configuration de l'hôte virtuel pour host1.example.org ; nous l'avons appelé `awesome-app`."
 
-"Check the configuration file by running the following command:"
+"Veuillez vérifier le fichier de configuration avec la commande suivante :"
 
 "*cat files/awesome-app*"
 
@@ -25,11 +25,11 @@ prompt {
         ""
         break
     }
-} 
+}
 
 run(`cp /tutorials/files/step-5/apache.yml apache.yml`)
 
-"Now, a quick update to our apache playbook and we're set. Inspect our playbook by running:"
+"J'en ai profité pour mettre à jour le playbook que vous pouvez vérifier avec la commande suivante :"
 
 "*cat apache.yml*"
 
@@ -39,9 +39,9 @@ prompt {
         ""
         break
     }
-} 
+}
 
-"Here we go! Run the following command to execute our playbook:"
+"Nous sommes prêtes à exécuter le playbook de la manière suivante :"
 
 "*ansible-playbook -i hosts -l host1.example.org apache.yml*"
 
@@ -49,14 +49,15 @@ prompt {
     if success && command == "ansible-playbook -i hosts -l host1.example.org apache.yml" {
         expect ("ansible-playbook -i hosts -l host1.example.org apache.yml")
         ""
-        "Pretty cool!" 
+        "Génial !"
         break
     }
-} 
+}
 
-"Well, thinking about it, we're getting ahead of ourselves here. Shouldn't we check that the config is ok before restarting apache? This way we won't end up interrupting the service if our configuration file is incorrect."
 
-"Lets do that in the next lesson."
+"Eh bien, en y réfléchissant, on va trop vite. Ne devrions-nous pas vérifier que la configuration est correcte avant de redémarrer apache ? De cette façon, nous ne risquons pas d'interrompre le service si notre fichier de configuration est incorrect."
+
+"Faisons cela dans la leçon suivante."
 
 "C'est la fin de cette leçon."
 
