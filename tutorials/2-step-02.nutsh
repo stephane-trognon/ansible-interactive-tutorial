@@ -120,13 +120,13 @@ prompt {
 prompt {
     if success && command == "ansible -i hosts -m setup host0.example.org" {
     	expect ("ansible -i hosts -m setup host0.example.org")
-        "Le module nous offre une foule d'information."
+        "Le module nous offre une foule d'informations."
         break
     }
 }
 
 "Vous pouvez aussi filtrer les clés retournées, pour ne retenir que des informations spécifiques."
-"Par exemple, imaginons que nous voulions savoir la quelle quantité de mémoire de vos hôtes : "
+"Par exemple, imaginons que nous voulions connaître la quantité de mémoire des hôtes : "
 
 "*ansible -i hosts -m setup -a 'filter=ansible_memtotal_mb' all*"
 
