@@ -92,7 +92,7 @@ print("\t
 
 "Il importe peu que ces fichiers existent mais si c'est le cas, il seront utilisés par Ansible."
 
-"Maintenant que nous avons une connaissance de base des modulesn, des inventaires et des variables, nous pouvons explorer la réelle puissance de Ansible avec les livres de jeu (playbooks)."
+"Maintenant que nous avons une connaissance de base des modules, des inventaires et des variables, nous pouvons explorer la réelle puissance de Ansible avec les livres de jeu (playbooks)."
 
 "C'est la fin de cette leçon."
 
