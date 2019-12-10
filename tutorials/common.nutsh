@@ -18,7 +18,7 @@ def clear_ws {
 }
 
 def enter_to_continue {
-    "Please press the \"`Enter`\" key to continue!"
+    "Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
     prompt {
         if command == "" {
             break
@@ -82,4 +82,3 @@ def in(d) {
 def user {
     return(run("whoami"))
 }
-

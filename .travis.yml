@@ -3,8 +3,8 @@ language: bash
 services:
   - docker
 
-env: 
-  - DOCKER_IMAGETAG="1.1"
+env:
+  - DOCKER_IMAGETAG="2.0"
 before_script:
   - ./tutorial.sh -r
   - if [ "${DOCKER_IMAGETAG}" == "latest" ]; then pushd images && make build_all TAG=latest&& popd; fi
@@ -25,6 +25,6 @@ script:
   - LESSON_NAME="12-step-12" ./tutorial.sh -t
   - LESSON_NAME="13-step-13" ./tutorial.sh -t
   - LESSON_NAME="14-freeplay" ./tutorial.sh -t
-  
+
 after_script:
   - ./tutorial.sh -r

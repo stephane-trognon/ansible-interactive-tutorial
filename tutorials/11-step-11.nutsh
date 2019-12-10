@@ -15,7 +15,7 @@ run(`cp -r /tutorials/files/step-11/* .`)
 
 "We'll use variables to configure all these parameters."
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -44,7 +44,7 @@ haproxy:\n\t
 
 "This is just a matter of taste. Complex vars can help group stuff logically. They can also, under some circumstances, merge subsequently defined keys (note however that this is not the default ansible behaviour). For now we'll just use simple variables."
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -132,7 +132,7 @@ prompt {
 
 "This is the end of this lesson!"
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

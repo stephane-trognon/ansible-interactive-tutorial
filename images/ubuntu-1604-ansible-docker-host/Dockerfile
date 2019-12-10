@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Hasan Turken
+MAINTAINER Goffinet François
 
 RUN apt-get update && apt-get install -y rsyslog iputils-ping netbase net-tools python openssh-server vim sudo curl python-yaml python-jinja2 python-paramiko python-crypto
 RUN mkdir ~/.ssh && ssh-keygen -N "" -t rsa -f ~/.ssh/id_rsa

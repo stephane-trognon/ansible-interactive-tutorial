@@ -1,15 +1,15 @@
-lesson_name("First modules and facts")
+lesson_name("Premiers modules et facts")
 make_and_go_ws
 clear_ws
 run(`cp /tutorials/files/step-1-2/hosts hosts`)
 
-"`Talking with nodes`"
+"`Communication avec les noeuds`"
 
-"Now we're good to go. "
+"Prêt à commencer ? "
 
-"Let's play with the command we saw in the previous chapter: `ansible`. This command is the first one of three that ansible provides which interact with nodes."
+"Commençons par jouer avec la commande vue dans la leçon précédente : `ansible`. C'est une première commande parmi d'autres que Ansible fournit pour interagir avec les noeuds à gérer."
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -17,13 +17,13 @@ prompt {
     }
 }
 
-"`Doing something useful`"
+"`Faire quelque chose d'utile`"
 
-"In the previous command, `-m ping` means `use module ping`. This module is one of many available with ansible. "
+"Dans l'exemple de la leçon précédente `-m ping` désigne l'usage du module `ping`. Ce module est des nombreux modules disponbibles avec Ansible."
 
-"`ping module` is really simple, it doesn't need any arguments. Modules that take arguments pass them via `-a` switch. Let's see a few other modules."
+"Ce module `ping` est très simple. Il ne demande aucun argument. On peut passer des arguments aux modules via l'option `-a` de la ligne de commande. Voyons quelques exemples d'autres modules."
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -31,22 +31,22 @@ prompt {
     }
 }
 
-"`Shell module`"
+"Module `Shell`"
 
-"This module lets you execute a shell command on the remote host"
+"Ce module vous permet d'exécuter n'importe qu'elle commande shell sur l'hôte distant."
 
-"Please run *ansible -i hosts -m shell -a 'uname -a' host0.example.org*"
+"Veuillez exécuter *ansible -i hosts -m shell -a 'uname -a' host0.example.org*"
 
 prompt {
     if success && command == "ansible -i hosts -m shell -a 'uname -a' host0.example.org" {
     	expect ("ansible -i hosts -m shell -a 'uname -a' host0.example.org")
-        "Easy!"
-        "Next one is the `copy module`"
+        "Facile !"
+        "Le prochain module est le module `copy`."
         break
     }
 }
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -54,16 +54,16 @@ prompt {
     }
 }
 
-"`Copy module`"
+"Module `Copy`"
 
-"No surprise, with this module you can copy a file from the controlling machine to the node. Lets say we want to copy our `/etc/motd` to `/tmp` of our target node. Please run the following command:"
+"Sans surprise ce module permet de réaliser la copie d'un fichier de la machine de contrôle et le noeud distant. Imaginons que nous voulions copier notre fichier `/etc/motd` dans le dossier /tmp` de l'hôte distant. Veuillez exécuter cette commande :"
 
 "*ansible -i hosts -m copy -a 'src=/etc/motd dest=/tmp/' host0.example.org*"
 
 prompt {
     if success && command == "ansible -i hosts -m copy -a 'src=/etc/motd dest=/tmp/' host0.example.org" {
     	expect ("ansible -i hosts -m copy -a 'src=/etc/motd dest=/tmp/' host0.example.org")
-        "Please check the output above."
+        "Veuillez vérifier la sortie."
         break
     }
 }
@@ -76,7 +76,7 @@ prompt {
 
 "If you can't find the right module, writing one is pretty easy (it doesn't even have to be Python, it just needs to speak JSON)."
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -100,7 +100,7 @@ prompt {
     }
 }
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -140,7 +140,7 @@ prompt {
 
 "BTW, when using the setup module, you can use `*` in the `filter=` expression. It will act like a shell glob"
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -160,7 +160,7 @@ prompt {
 
 "This is the end of this lesson!"
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

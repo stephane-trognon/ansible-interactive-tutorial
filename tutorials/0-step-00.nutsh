@@ -1,13 +1,13 @@
-lesson_name("Getting Started")
+lesson_name("Pour commencer")
 make_and_go_ws
 
-"Hello, welcome to the Ansible Interactive Tutorial!"
+"Bienvenue dans le tutoriel interactif sur Ansible !"
 
-"This lesson is to make you familiar with the environment."
+"Cette leçon vise à vous familiariser avec l'environnement."
 
-"Now, you are inside a docker container on which you have ansible installed."
+"Maitenant, vous êtes à l'intérieur d'un conteneur Docker dans lequel Ansible est installé."
 
-"Verify that you have `ansible` installed by running the following command:"
+"Veuillez vérifier que `ansible` est installé en exécutant la commande suivante :"
 
 "*ansible --version*"
 
@@ -17,11 +17,11 @@ prompt {
         ""
         break
     }
-} 
+}
 
-"There are 3 more docker containers which behave exactly same as (virtual or physical) machines acting as Ansible nodes throughout the tutorial."
+"Il y a 3 conteneurs Docker supplémentaires qui se comportent comme n'importe quel ordinateur et qui feront office de noeud Ansible à gérer tout au long de ce tutoriel."
 
-"Run the following command to verify that they are up and running:"
+"Veuillez exécuter la commande suivante pour vérifier que ces 3 trois sont démarrés et accessibles :"
 
 "*fping host{0,1,2}.example.org*"
 
@@ -29,13 +29,14 @@ prompt {
     if success && command == "fping host{0,1,2}.example.org" {
         expect ("fping host{0,1,2}.example.org")
         ""
-        "Cool!"
+        "Super !"
         break
     }
 }
 
-"These hosts were already provisioned with the ssh key of this node. So you don't have to deal with setting up keys and can directly ssh into any of them as root user."
+"Ces hôtes sont déjà approvisionnés avec la clé SSH du noeud sur lequel vous êtes. Vous ne devriez alors pas vous soucier de la configuration des clés de configuration. Vous pouvez vous y connecter directement en SSH avec le compte root"
 
+"Veuillez tenter de vous conneceter sur host0.example.org et n'oubliez pas de revenir ici (exécutez *exit*)"
 "Try it and don't forget to get back to continue (run *exit* once you got there):"
 
 "*ssh host0.example.org*"
@@ -44,20 +45,20 @@ prompt {
     if success && command =~ "ssh host0.example.org.*" {
         expect (`ssh host0.example.org -o "StrictHostKeyChecking no" "whoami"`)
         ""
-        "Welcome back :)"
+        "Heureux de vous revoir :)"
         break
     }
 }
 
-"`ansible-interactive-tutorial/workspace` folder is mounted as `/root/workspace` inside this container. So, you can use your favorite editor on your local machine to edit files. Editing files is not necessary to follow the lessons though."
+"Le dossier `ansible-interactive-tutorial/workspace` est monté dans `/root/workspace` à l'intérieur du conteneur. Vous pouvez de la sorte utiliser votre outil favori pour éditer vos fichiers. Ceci dit, il ne sera pas nécessaire d'éditer des fichiers pour suivre les leçons du tutoriel."
 
-"You can run each lesson invididually but it is `highly encoureged to follow the order` as most of them are built on top of the previous one!"
+"Vous pouvez entrer dans immédiatement dans n'importe quelle leçon, mais il est fortement recommandé de les suivre dans l'ordre car elles sont toutes contruites sur celle qui précède."
 
-"Please keep in mind, you can quit from any lesson by running *exit* from terminal"
+"Veuillez vous rappeler que vous pouvez toujours sortir d'une leçon en tapant *exit* sur le terminal."
 
-"Now you are ready to start!"
+"Vous êtes maintenant prêt pour commencer la première leçon du tutoriel interactif sur Ansible !"
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

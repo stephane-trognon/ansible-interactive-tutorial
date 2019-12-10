@@ -1,13 +1,14 @@
-lesson_name("Basic inventory")
+lesson_name("Inventaire de base")
 make_and_go_ws
 clear_ws
 
-"`INVENTORY`"
+"`FICHIER D'INVENTAIRE`"
 
-"Before continuing, you need an inventory file. The default place for such a file is `/etc/ansible/hosts`."
-"However, you can configure ansible to look somewhere else, use an environment variable (`ANSIBLE_HOSTS`), or use the `-i` flag in ansible commands and provide the inventory path."
+"Avant de continuer, vous avez besoin d'un inventaire. L'emplacement par défaut d'un tel fichier est `/etc/ansible/hosts`."
 
-"Please press the \"`Enter`\" key to continue!"
+"Vous pouvez configurer Ansible pour qu'il utilise un autre emplacement pour désigner ce fichier, avec une variable d'environnement (`ANSIBLE_HOSTS`) ou encore, par exemple, en utilisant l'option `-i` avec le binaire `ansible` en indiquant le chemin."
+
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect(" ")
@@ -17,21 +18,21 @@ prompt {
 
 run(`cp /tutorials/files/step-1-2/hosts hosts`)
 
-"I've created an inventory file for you in the workspace named `hosts`"
+"J'ai créé un fichier d'inventaire pour vous dans le dossier de travail (workspace) nommé `hosts`."
 
-"Please run *cat hosts* to see the content of your first inventory file"
+"Veuillez exécuter *cat hosts* pour voir le contenu de votre premier fichier d'inventaire."
 
 prompt {
     if success && command =~ "^cat hosts" {
         expect ("cat hosts")
-        "`ansible_host` is a special `variable` that sets the IP ansible will use when trying to connect to this host."
+        "`ansible_host` est une variable spéciale qui précise l'adresse IP que Ansible va utiliser pour joindre l'hôte."
 
-        "`ansible_user` is another special `variable` that tells ansible to connect as this user when using ssh. By default ansible would use your current username, or use another default provided in ~/.ansible.cfg (`remote_user`)."
+        "`ansible_user` est une autre `variable` spéciale qui indique à Ansible le nom d'utilisateur à emprunter pour la connexion SSH. Par défaut, Ansible utilise le nom d'utilisateur courant ou un autre par défaut définit dans le fichier de configuration ~/.ansible.cfg (`remote_user`)."
         break
     }
 }
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -41,23 +42,23 @@ prompt {
 
 "`TESTING`"
 
-"Now that ansible is installed, let's check everything works properly."
+"Maintenant que Ansible est installé, vérifions si tout fonctionne correctement"
 
-"What ansible will try to do here is just executing the ping module (more on modules later) on each host."
+"Pour le test, nous allons exécuter le module ping sur tous les hôtes de l'inventaire."
 
-"Please run *ansible -m ping all -i hosts*"
+"Veuillez exécuter *ansible -m ping all -i hosts*"
 
 prompt {
     if success && command =~ `^ansible -m ping all -i hosts` {
         expect ("ansible -m ping all -i hosts")
-        "Good! All 3 hosts are alive and kicking, and ansible can talk to them."
+        "Très bien! Les 3 hôtes sont joingnable et Ansible peut communiquer avec chacun."
         break
     }
 }
 
-"This is the end of this lesson!"
+"Cette leçon est terminée !"
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

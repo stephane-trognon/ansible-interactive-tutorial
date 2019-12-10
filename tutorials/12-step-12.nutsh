@@ -70,7 +70,7 @@ roles\n\t
 
 "Quite simple. The files named `main.yml` are not mandatory. However, when they exist, roles will add them to the play automatically. You can use this file to include other tasks, handlers, ... in the play. We'll see that in a minute."
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -88,7 +88,7 @@ prompt {
 
 "Note that roles sit in the `roles` directory, which is also cool since it will reduce top level ansible playbook clutter. But you can configure Ansible to use an alternate directory to store role (see roles_path variable in ansible.cfg: `http://docs.ansible.com/ansible/latest/intro_configuration.html#roles-path`). This way you can setup a 'central place' for all your roles, and use them in all your playbooks."
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -156,7 +156,7 @@ prompt {
     }
 } 
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
@@ -337,7 +337,7 @@ prompt {
 
 "This is the end of this lesson!"
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")

@@ -1,5 +1,5 @@
-USER=turkenh
-TAG=1.1
+USER=goffinet
+TAG=2.0
 
 .DEFAULT_GOAL := all
 

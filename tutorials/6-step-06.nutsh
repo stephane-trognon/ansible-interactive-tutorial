@@ -65,7 +65,7 @@ prompt {
 
 "This is the end of this lesson!"
 
-"Please press the \"`Enter`\" key to continue!"
+"Veillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
     if command == "" {
         expect (" ")
