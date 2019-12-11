@@ -10,3 +10,6 @@
   * directive `register: result`
   * directive `ignore_errors: true`
   * directive `when: result is failed`
+* [`tutorials/10-step-10.nutsh`](tutorials/10-step-10.nutsh)
+  * module `template`
+  * module `lineinfile`
