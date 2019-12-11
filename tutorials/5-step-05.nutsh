@@ -61,10 +61,4 @@ prompt {
 
 "C'est la fin de cette leçon."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue

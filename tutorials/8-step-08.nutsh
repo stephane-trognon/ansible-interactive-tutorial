@@ -8,13 +8,7 @@ run(`cp -r /tutorials/files/step-8/files files`)
 
 "Nous avons installé apache, poussé notre virtualhost et enfin redémarré notre serveur de manière sécurisée. Maintenant, nous allons déployer notre application avec le module `git`."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Le module Git`"
 
@@ -22,13 +16,7 @@ prompt {
 
 "Notre hôte virtuel est configuré mais quelques modifications sont nécessaires pour terminer la configuration du déploiement. D'abord, nous avons besoin d'installer le paquet `libapache2-mod-php5` car nous déployons une application PHP. Ensuite, nous avons à installer git car il est utilisé par le module `git` afin de cloner notre application."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "On pourrait tenter ceci pour chaque paquet :"
 
@@ -52,13 +40,7 @@ print("\t
 ...\n\t
 ")
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "Aussi Ansible peut boucler (`loop:`) sur les objets d'une liste (`{{ item }}`) :"
 
@@ -75,13 +57,7 @@ print("\t
 ...\n\t
 ")
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "Mais heureusement la bonne pratique veut que l'on puisse fournir une liste à l'argument `name:` du module `apt`."
 
@@ -97,13 +73,7 @@ print("\t
 ...\n\t
 ")
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 run(`cp /tutorials/files/step-8/apache.yml apache.yml`)
 
@@ -152,10 +122,4 @@ prompt {
 
 "C'est la fin de cette leçon."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue

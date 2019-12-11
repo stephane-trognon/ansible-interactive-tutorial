@@ -16,8 +16,8 @@ run(`cp -r /tutorials/files/step-13/* .`)
 prompt {
     if success && command == "ansible-galaxy install geerlingguy.jenkins" {
         expect ("ansible-galaxy install geerlingguy.jenkins")
-        "" 
-        "OK!" 
+        ""
+        "OK!"
         break
     }
 }
@@ -32,7 +32,7 @@ prompt {
     if success && command == "cat hosts" {
         expect ("cat hosts")
         ""
-        "See? We created a new group named `jenkins`. This is not mandatory but a good practice."   
+        "See? We created a new group named `jenkins`. This is not mandatory but a good practice."
         break
     }
 }
@@ -50,8 +50,8 @@ prompt {
 
         "The playbook includes another role which installs `java` (a prerequisite for jenkins). This role has already been installed with our first `ansible-galaxy install ...` command as `geerlingguy.jenkins` has a dependency on `geerlingguy.java`."
 
-        "That's it, we are ready to go!"  
-         
+        "That's it, we are ready to go!"
+
         break
     }
 }
@@ -63,15 +63,15 @@ prompt {
 prompt {
     if success && command == "ansible-playbook -i hosts jenkins.yaml" {
         expect ("ansible-playbook -i hosts jenkins.yaml")
-        "" 
-        
+        ""
+
         "Perfect!"
 
         say("Now go to `http://127.0.0.1:" + run (`echo $(($HOSTPORT_BASE+3))`) + "` and see the result!")
 
         say("You can login with `admin/admin` :)")
-        
-        say("! Remember our hosts are docker containers and `port 8080 of host0.example.org` is exposed to `port " +  run (`echo $(($HOSTPORT_BASE+3))`) + " of your local machine`") 
+
+        say("! Remember our hosts are docker containers and `port 8080 of host0.example.org` is exposed to `port " +  run (`echo $(($HOSTPORT_BASE+3))`) + " of your local machine`")
 
         break
     }
@@ -80,10 +80,4 @@ prompt {
 
 "C'est la fin de cette leçon."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue

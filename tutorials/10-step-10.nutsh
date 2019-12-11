@@ -17,13 +17,7 @@ run(`cp -r /tutorials/files/step-10/* .`)
 
 "Les modèles Jinja2 supportent des conditions, des boucles, des filtres, etc."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "Je viens de créer un dossier nommé `templates` qui contient un modèle Jinja2 nommé `haproxy.cfg.j2`. L'extension `.j2` n'a aucune portée et elle est utilisée de manière conventionnelle."
 
@@ -47,13 +41,7 @@ prompt {
 
 "Nous aurions pu écrire la liste des hôtes à la main, puisque nous n'en avons que deux. Mais nous espérons que le serveur aura beaucoup de succès et que nous en aurons besoin d'une centaine. Ainsi, ajouter des serveurs à la configuration ou en changer certains revient à ajouter ou supprimer des hôtes du groupe `web`."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Playbook HAProxy`"
 
@@ -98,10 +86,4 @@ prompt {
 
 "C'est la fin de cette leçon."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue

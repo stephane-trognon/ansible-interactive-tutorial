@@ -62,13 +62,7 @@ prompt {
     }
 }
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 print ("\t
 PLAY [web] ********************* \n
@@ -76,13 +70,7 @@ PLAY [web] ********************* \n
 
 "En premier lieu, Ansible nous indique qu'il exécute le jeu sur les hôtes `web`. Un jeu est la suite des instructions relatives à l'hôte. Si nous avions un autre hôte dans ce groupe, il apparaîtrait aussi."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 print ("\t
 GATHERING FACTS ********************* \n\t
@@ -92,13 +80,7 @@ ok: [host1.example.org]\n\t
 "Avez-vous le souvenir de notre précédente leçon avec le module `setup` ? Avec chaque jeu, Ansible collecte par défaut les facts. Quand cela n'est pas nécessaire, on peut ajouter l'entrée `gather_facts: no` à hauteur de l'entrée `hosts:` et de l'entrée `tasks:`."
 
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 print ("\t
 TASK: [Installs apache web server] ********************* \n\t
@@ -108,13 +90,7 @@ changed: [host1.example.org]\n\t
 "Ensuite, l'élément concret, la seule et unique tâche qui est exéxutée et un retour nous indiquant `changed` supposant que quelque chose a changé sur  `host1.example.org`."
 
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 print ("\t
 PLAY RECAP ********************* \n\t
@@ -124,13 +100,7 @@ host1.example.org              : ok=2    changed=1    unreachable=0    failed=0 
 "Enfin, La sortie de Ansible offre un récupitulatif de ce qui s'est passé : deux tâches ont été exécutées (dont le `fact_gathering` implicite) et l'une d'elle a changé quelque chose sur l'hôte cible."
 
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "Maintenant, recommençons la commande et soyons attentif à ce qui se passe :"
 
@@ -148,13 +118,7 @@ prompt {
 
 "Cela est parfaitement normal et c'est une fonctionnalité principale de Ansible. Le Playbook n'agira que si cela est nécessaire. On appelle cela l''idempotence'. Un livre de jeux devrait viser un état, quel que soit le nombre de fois que l'on exécute ce livre de jeu."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Affiner les choses`"
 
@@ -162,10 +126,4 @@ prompt {
 
 "C'est la fin de cette leçon."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue

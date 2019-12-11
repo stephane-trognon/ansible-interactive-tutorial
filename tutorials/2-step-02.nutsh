@@ -9,13 +9,7 @@ run(`cp /tutorials/files/step-1-2/hosts hosts`)
 
 "Commençons par jouer avec la commande vue dans la leçon précédente : `ansible`. C'est une première commande parmi d'autres que Ansible fournit pour interagir avec les noeuds à gérer."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Faire quelque chose d'utile`"
 
@@ -23,13 +17,7 @@ prompt {
 
 "Ce module `ping` est très simple. Il ne demande aucun argument. On peut passer des arguments aux modules via l'option `-a` de la ligne de commande. Voyons quelques exemples d'autres modules."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "Module `Shell`"
 
@@ -46,13 +34,7 @@ prompt {
     }
 }
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "Module `Copy`"
 
@@ -77,13 +59,7 @@ prompt {
 
 "Si vous ne trouvez pas le module qu'il vous faut, il est relativement facile d'écrire le vôtre. Python n'est pas nécessaire , il doit juste parler JSON."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Un seule commande pour tous les controler`"
 
@@ -101,13 +77,7 @@ prompt {
     }
 }
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Beaucoup d'autres facts`"
 
@@ -140,13 +110,7 @@ prompt {
 
 "Vous pouvez filter sur d'autres clés comme `ansible_distribution` ou encore `ansible_lsb`. Notez aussi que pouvez utiliser le carctère `*` comme masque générique ('glob')."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Sélectionner des hôtes ('hosts')`"
 
@@ -160,10 +124,4 @@ prompt {
 
 "C'est la fin de cette leçon."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
