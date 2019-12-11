@@ -2,17 +2,19 @@
 
 [![Build Status](https://travis-ci.org/turkenh/ansible-interactive-tutorial.svg?branch=master)](https://travis-ci.org/turkenh/ansible-interactive-tutorial)
 
-Interactive tutorials for Ansible
+Tutoriels interactifs sur Ansible
 
-## Prerequisite
+## Prérequis
 
-Only prerequisite is **docker**
+Le seul prérequis est **docker** (version 1.9+, testé avec la version 1.12+) :
 
-Requires docker version 1.9+ and tested with 1.12+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+```
 
-If you don't have docker installed, you can also run on http://play-with-docker.com (just click "+ ADD NEW INSTANCE" button and clone this repo there)
+Vous pouvez aussi passer par [http://play-with-docker.com](http://play-with-docker.com) (Cliquez sur "+ ADD NEW INSTANCE" et choisissez ce repo).
 
-## How to Run
+## Comment lancer le tutoriel
 
 ```bash
 ./tutorial.sh
@@ -20,52 +22,51 @@ If you don't have docker installed, you can also run on http://play-with-docker.
 
 [![demo](https://asciinema.org/a/CPUhOGGlcLiXVlZKIuiuk5Q7f.png)](https://asciinema.org/a/CPUhOGGlcLiXVlZKIuiuk5Q7f?autoplay=1)
 
-## Clean up
+## Nettoyage
 
 ```bash
 ./tutorial.sh --remove
 ```
 
-## More Details
+## Plus de détails
 
 ### Tutorials
 
-Almost all of the tutorials are adapted from the great [leucos/ansible-tuto](https://github.com/leucos/ansible-tuto) repository:
+Ce projet est fondé sur [turkenh/ansible-interactive-tutorial](https://github.com/turkenh/ansible-interactive-tutorial) qui s'inspire largement du repo [leucos/ansible-tuto](https://github.com/leucos/ansible-tuto). Je l'ai adapté en français :
 
 ```
-1. Getting Started
-2. Basic inventory
-3. First modules and facts
-4. Groups and variables
-5. Playbooks
-6. Playbooks, pushing files on nodes
-7. Playbooks and failures
-8. Playbook conditionals
-9. Git module
-10. Extending to several hosts
-11. Templates
-12. Variables again
-13. Migrating to roles!
-14. Using roles from Ansible Galaxy - Install a Jenkins server
-15. Free play
+1) Pour commencer
+2) Inventaire de base
+3) Premiers modules et facts
+4) Groupes et variables
+5) Playbooks
+6) Playbooks, pousser des fichiers sur les noeuds
+7) Playbooks et les erreurs
+8) Playbooks et les conditions
+9) Module Git
+10) Etendre le playbook à plusieurs hôtes
+11) Templates - Modèles
+12) Encore des variables
+13) Migration vers les rôles
+14) Utiliser des rôles Ansible Galaxy - Installer un serveur Jenkins
+15) Jeux libres
 ```
 
-You can run each lesson individually but it is **highly encouraged to follow the order** as most of them are built on top of the previous one!
+Vous pouvez exécuter chaque leçon individuellement mais il est **fortement conseillé de suivre l'ordre** car la plupart d'entre elles sont construites sur la précédente !
 
+### Conteneurs
 
-### Containers
+`tutorial.sh' démarre quatre conteneurs docker en coulisses. Un pour exécuter le tutoriel lui-même et trois en tant que nœuds qui se comportent exactement comme des machines (virtuelles ou physiques) dans le tutoriel.
 
-`tutorial.sh` starts 4 docker containers behind the scenes. 1 for running the tutorial itself and 3 as ansible nodes which behave exactly same as (virtual or physical) machines throughout the tutorial. 
+**ansible.tutorial** est un conteneur de tutoriel Alpine Linux dans lequel ansible et [nutsh](https://github.com/turkenh/nutsh) (un canevas pour créer des tutoriels interactifs en ligne de commande) sont disponibles.
 
-**ansible.tutorial** is an alpine based tutorial container in which ansible and [nutsh](https://github.com/turkenh/nutsh) (a framework for creating interactive command line tutorials) are available.
-
-**host0.example.org**, **host1.example.org** and **host2.example.org** are the Ubuntu 16.04 based containers that act as ansible nodes. These nodes were already provisioned with the ssh key of **ansible.tutorial** container. So that you don't have to deal with setting up keys.
+**host0.example.org**, **host1.example.org** et **host2.example.org** sont les conteneurs basés sur Ubuntu 18.04 qui agissent comme des nœuds exploitables. Ces nœuds ont déjà été approvisionnés avec la clé ssh du conteneur **ansible.tutorial**. Ainsi, vous n'avez pas à vous occuper de l'installation des clés.
 
 ### Port Mapping
 
-There are some checkpoints in the tutorials where you can check and verify your deployments. For this purpose some ports of the containers are exposed as host ports as follows:
+Il y a des checkpoints dans les tutoriels où vous pouvez vérifier et vérifier vos déploiements. A cet effet, certains ports des conteneurs sont exposés comme ports hôtes comme suit :
 
-Container|Container Port|Host Port   
+Conteneur|Port du conteneur|Port de l'hôte
 :---|:---:|:---:
 host0.example.org|80|`$HOSTPORT_BASE`  
 host1.example.org|80|`$HOSTPORT_BASE+1`
@@ -74,16 +75,13 @@ host0.example.org|8080|`$HOSTPORT_BASE+3`
 host1.example.org|30000|`$HOSTPORT_BASE+4`
 host2.example.org|443|`$HOSTPORT_BASE+5`
 
-`HOSTPORT_BASE` is set to `42726` by default and can be changed while starting the tutorial (in case any of the consecutive 6 ports is not available) as follows:
+La variable `HOSTPORT_BASE` est fixée à la valeur `42726` par défaut et peut être changée en démarrant le tutoriel comme suit :
 
 ```bash
 ./tutorial.sh --remove # Make sure you shut down the previous ones
 HOSTPORT_BASE=<some_other_value> ./tutorial.sh
 ```
 
-### Workspace Directory
-`ansible-interactive-tutorial/workspace` directory on your local machine is mounted as `/root/workspace` inside the **ansible.tutorial** container. So, you can use your favorite editor on your local machine to edit files. Editing files is not necessary to follow the lessons though.
+### Dossier de l'espace de travail Workspace
 
-
-
-
+Un dossier `ansible-interactive-tutorial/workspace` sur votre machine locale est monté en tant que `/root/workspace` dans le conteneur **ansible.tutorial**. Ainsi, vous pouvez utiliser votre éditeur favori sur votre machine locale pour éditer des fichiers. L'édition de fichiers n'est cependant pas nécessaire pour suivre les leçons.
