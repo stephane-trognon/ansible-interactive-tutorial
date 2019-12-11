@@ -1,15 +1,15 @@
-lesson_name("Using roles from Ansible Galaxy - Install a Jenkins server")
+lesson_name("Utiliser des rôles Ansible Galaxy - Installer un serveur Jenkins")
 make_and_go_ws
 clear_ws
 run(`cp -r /tutorials/files/step-13/* .`)
 
-"Ansible Galaxy ( `http://docs.ansible.com/ansible/latest/galaxy.html` ) refers to the Galaxy website where users can share roles, and to a command line tool for installing, creating and managing roles."
+"Ansible Galaxy ( `http://docs.ansible.com/ansible/latest/galaxy.html` ) fait référence au site Web Galaxy grâce auquel les utilisateurs peuvent paratger des rôles mais aussi à la ligne de commande qui permet de les gérer."
 
-"In this lesson, we are going to use a role from Ansible Galaxy to install Jenkins on one of our nodes."
+"Dans cette leçon, nous allons utiliser des rôles qui viennent de Ansible Galaxy pour installer un serveur d'intégration Jenkins."
 
-"You can browse available roles here: `https://galaxy.ansible.com/list#/roles`"
+"Vous pouvez faire votre marché de rôles sur `https://galaxy.ansible.com/list#/roles`."
 
-"Run the following command to install the required role"
+"Veuillez exécuter la commande suivante pour installer le rôle qui nous intéresse :"
 
 "*ansible-galaxy install geerlingguy.jenkins*"
 
@@ -17,14 +17,14 @@ prompt {
     if success && command == "ansible-galaxy install geerlingguy.jenkins" {
         expect ("ansible-galaxy install geerlingguy.jenkins")
         ""
-        "OK!"
+        "Très bien !"
         break
     }
 }
 
-"Let's continue with an inventory file. We will install on `host0.example.org`"
+"Continuons nos opérations avec un fichier d'inventaire. Nous installerons le serveur d'intégration Jenkins sur l'hôte `host0.example.org`."
 
-"Check the inventory file I've prepared for you, by running:"
+"Veuillez vérifier l'inventaire que j'ai préparé pour vous en exécutant la commande suivante :"
 
 "*cat hosts*"
 
@@ -32,14 +32,15 @@ prompt {
     if success && command == "cat hosts" {
         expect ("cat hosts")
         ""
-        "See? We created a new group named `jenkins`. This is not mandatory but a good practice."
+        "Voyez-vous ? J'ai créé un groupe nommé `jenkins`. Ce n'est pas obligatoire mais c'est une bonne pratique."
         break
     }
 }
 
-"Now we need a playbook and we will use the one provided as example in github repo of the role: `https://github.com/geerlingguy/ansible-role-jenkins#example-playbook`"
+""
+"Maintenant nous avons besoin d'un livre de jeu. Nous pouvons utiliser celui fourni comme exemple dans le repo github du rôle : `https://github.com/geerlingguy/ansible-role-jenkins#example-playbook`."
 
-"Inspect our playbook, by running:"
+"Veuillez examiner le playbook avec la commande suivante :"
 
 "*cat jenkins.yaml*"
 
@@ -48,15 +49,15 @@ prompt {
         expect ("cat jenkins.yaml")
         ""
 
-        "The playbook includes another role which installs `java` (a prerequisite for jenkins). This role has already been installed with our first `ansible-galaxy install ...` command as `geerlingguy.jenkins` has a dependency on `geerlingguy.java`."
+        "Ce playbook inclut un autre role qui installe `java` (qui est indispensable à jenkins). Ce rôle a déjà été installé avec notre première commande `ansible-galaxy install ...` car `geerlingguy.jenkins` dépend de `geerlingguy.java`."
 
-        "That's it, we are ready to go!"
+        "Tout est prêt ! Nous pouvons démarrer !"
 
         break
     }
 }
 
-"Run the following command to run the playbook:"
+"Veuillez exécuter la commande suivante pour lancer le playbook :"
 
 "*ansible-playbook -i hosts jenkins.yaml*"
 
@@ -67,11 +68,11 @@ prompt {
 
         "Perfect!"
 
-        say("Now go to `http://127.0.0.1:" + run (`echo $(($HOSTPORT_BASE+3))`) + "` and see the result!")
+        say("Veuillez vous rendre sur l'URL `http://127.0.0.1:" + run (`echo $(($HOSTPORT_BASE+3))`) + "` et vous verrez le résultat!")
 
-        say("You can login with `admin/admin` :)")
+        say("Vous pouvez vous enregistrer avec `admin/admin` :)")
 
-        say("! Remember our hosts are docker containers and `port 8080 of host0.example.org` is exposed to `port " +  run (`echo $(($HOSTPORT_BASE+3))`) + " of your local machine`")
+        say("! Souvenez-vous que nos hôtes sont des conteneurs Docker et que `le port 8080 of host0.example.org` est exposé sur `le port " +  run (`echo $(($HOSTPORT_BASE+3))`) + " de votre machine locale`")
 
         break
     }
