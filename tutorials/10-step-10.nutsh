@@ -1,42 +1,21 @@
-lesson_name("Templates")
+lesson_name("Templates - Modèles")
 make_and_go_ws
 clear_ws
 run(`cp -r /tutorials/files/step-10/* .`)
 
-"`Templates`"
+"`Templates - Modèles`"
 
-"We'll use the `haproxy` as loadbalancer. Of course, install is just like we did for apache. But now configuration is a bit more tricky since we need to list all web servers in haproxy's configuration. How can we do that?"
+"Nous utiliserons `haproxy` comme équilibreur de charge. L'installation est fort semblable à celle d'apache. Mais la configuration est un peu plus délicate car il faut lister tous les serveurs web dans la configuration d'haproxy. Comment pouvons-nous faire cela ?"
 
-"`HAProxy configuration template`"
+"`Modèle de configuration HAProxy`"
 
-"Ansible uses `Jinja2` ( `http://jinja.pocoo.org/docs/2.9/` ), a templating engine for Python. When you write Jinja2 templates, you can use any variable defined by Ansible."
+"Ansible utilise `Jinja2` ( `https://jinja.palletsprojects.com/en/2.10.x/` ), un 'templating engine' pour Python. Lorsque vous écrivez des modèles Jinja2, vous pouvez utiliser n'importe quelle variable définie par Ansible."
 
-"For instance, if you want to output the `inventory_name` of the host the template is currently built for, you just can write `{{ inventory_hostname }}` in the Jinja template."
+"Par exemple, si vous voulez éditer le `nom_inventaire` de l'hôte pour lequel le modèle est actuellement fabriqué, vous pouvez simplement écrire `{{ inventory_hostname }}` dans le modèle Jinja."
 
-"Or if you need the IP of the first ethernet interface (which ansible knows thanks to the `setup` module), you just write: `{{ ansible_eth0['ipv4']['address'] }}` in your template."
+"Ou si vous avez besoin de l'adresse IP de la première interface Ethernet (que vous connaissez grâce au module `setup`), vous n'avez qu'à écrire : `{{ ansible_eth0['ipv4']['address'] }}` dans votre modèle."
 
-"Jinja2 templates also support conditionals, for-loops, etc..."
-
-"I've just created a directory called `templates`, and created a Jinja template with name `haproxy.cfg.j2` inside. We use the `.j2` extension by convention, to make it obvious that this is a Jinja2 template, but this is not mandatory."
-
-"Inspect the template file by running the following command:"
-
-"*cat templates/haproxy.cfg.j2*"
-
-prompt {
-    if success && command == "cat templates/haproxy.cfg.j2" {
-        expect ("cat templates/haproxy.cfg.j2")
-        ""
-        "We have many new things going on here."
-        break
-    }
-} 
-
-"First, `{{ ansible_eth0['ipv4']['address'] }}` will be replaced by the IP of the load balancer on eth0."
-
-"Then, we have a loop. This loop is used to build the backend servers list. It will loop over every host listed in the `[web]` group (and put this host in the `backend` variable). For each of the hosts it will render a line using host's facts. All hosts' facts are exposed in the `hostvars` variable, so it's easy to access another host variables (like its hostname or in this case IP)."
-
-"We could have written the host list by hand, since we have only 2 of them. But we're hoping that the server will be very successful, and that we'll need a hundred of them. Thus, adding servers to the configuration or swapping some out boils down to adding or removing hosts from the `[web]` group."
+"Les modèles Jinja2 supportent des conditions, des boucles, des filtres, etc."
 
 "Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
 prompt {
@@ -46,11 +25,41 @@ prompt {
     }
 }
 
-"`HAProxy playbook`"
+"Je viens de créer un dossier nommé `templates` qui contient un modèle Jinja2 nommé `haproxy.cfg.j2`. L'extension `.j2` n'a aucune portée et elle est utilisée de manière conventionnelle."
 
-"We've done the most difficult part of the job. Writing a playbook to install and configure HAproxy is a breeze."
+"Veuillez examiner le modèle Jinja2 en exécutant la commande suivante :"
 
-"Display the playbook for haproxy by running the following command:"
+"*cat templates/haproxy.cfg.j2*"
+
+prompt {
+    if success && command == "cat templates/haproxy.cfg.j2" {
+        expect ("cat templates/haproxy.cfg.j2")
+        ""
+        "Il y pas mal de choses nouvelles à apprendre."
+        break
+    }
+}
+
+
+"D'abord, la valeur de la variable de l'hôte `{{ ansible_eth0['ipv4']['address'] }}` sera l'adresse IPv4 de l'interface eth0."
+
+"Ensuite, nous avons une boucle. Cette boucle est utilisée pour construire la liste des serveurs dits de 'backend'. Cela va boucler sur la liste des hôtes du groupe `web` et valoriser la variable `backend`. Tous les 'facts' des hôtes sont exposés dans la variable `hostvars`, il est donc facile d'accéder à d'autres variables hôtes (comme son nom d'hôte ou dans ce cas IP)."
+
+"Nous aurions pu écrire la liste des hôtes à la main, puisque nous n'en avons que deux. Mais nous espérons que le serveur aura beaucoup de succès et que nous en aurons besoin d'une centaine. Ainsi, ajouter des serveurs à la configuration ou en changer certains revient à ajouter ou supprimer des hôtes du groupe `web`."
+
+"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
+prompt {
+    if command == "" {
+        expect (" ")
+        break
+    }
+}
+
+"`Playbook HAProxy`"
+
+"Nous avons fait la partie la plus difficile du travail. Ecrire un playbook pour installer et configurer HAproxy est un jeu d'enfant."
+
+"Veuillez examiner ce livre de jeu en exécutant la commande suivante :"
 
 "*cat haproxy.yml*"
 
@@ -60,32 +69,32 @@ prompt {
         ""
         break
     }
-} 
+}
 
-"Looks familiar, isn't it? The only new module here is `template`, which has the same arguments as `copy`. We also restrict this playbook to the group `haproxy`."
+"Cela vous dit quelque chose, n'est-ce pas ? Le seul nouveau module ici est `template`, qui a les mêmes arguments que le module `copy`. Nous limitons aussi ce livre de jeu au groupe 'haproxy'."
 
-"And now... let's try this out. Since our inventory contains only hosts necessary for the cluster, we don't need to limit the host list and can even run both playbooks. Well, to tell the truth, we must run both of them at the same time, since the haproxy playbook requires facts from the two webservers. In the next lesson we'll show how to avoid this."
+"Puisque notre inventaire ne contient que les hôtes nécessaires au cluster, nous n'avons pas besoin de limiter la liste d'hôtes et nous pouvons même exécuter les deux playbooks. Eh bien, à vrai dire, nous devons les exécuter tous les deux en même temps, puisque le playbook haproxy exige des 'facts' des deux serveurs web. Dans la prochaine leçon, nous montrerons comment éviter cela."
 
-"Run the following command to execute our playbooks:"
+"Veuillez exécuter la commande suivante pour lancer les deux playbooks :"
 
 "*ansible-playbook -i hosts apache.yml haproxy.yml*"
 
 prompt {
     if success && command == "ansible-playbook -i hosts apache.yml haproxy.yml" {
         expect ("ansible-playbook -i hosts apache.yml haproxy.yml")
-        "" 
-        "Looks good." 
-        
-        say("Now head to `http://127.0.0.1:" + run (`echo $HOSTPORT_BASE`) + "` and see the result. Your cluster is deployed!")
-        
-        say("You can even peek at HAProxy's statistics at `http://127.0.0.1:" + run (`echo $HOSTPORT_BASE`) + "/haproxy?stats`")
-        
-        say("! Remember our hosts are docker containers and `port 80 of host0.example.org` is exposed to `port " +  run (`echo $HOSTPORT_BASE`) + " of your local machine`") 
+        ""
+        "Cela semble fonctionner."
+
+        say("Si vous ouvrez l'URL `http://127.0.0.1:" + run (`echo $HOSTPORT_BASE`) + "` dans un navigateur, voyez les résultats. Votre cluster est déployé !")
+
+        say("Vous pouvez même consulter les statistiques de HAProxy à l'adresse suivante : `http://127.0.0.1:" + run (`echo $HOSTPORT_BASE`) + "/haproxy?stats`")
+
+        say("! Souvenez-vous que nos hôtes sont des conteneurs Docker et que `le port 80 de host0.example.org` est exposé sur `le port " +  run (`echo $HOSTPORT_BASE`) + " de votre machine locale.`")
         break
     }
 }
 
-"Now on to the next lesson about \"Variables again\"."
+"Nous pouvons maintenant aborder la nouvelle leçon 'Encore les variables'."
 
 "C'est la fin de cette leçon."
 
