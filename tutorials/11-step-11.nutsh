@@ -3,7 +3,7 @@ make_and_go_ws
 clear_ws
 run(`cp -r /tutorials/files/step-11/* .`)
 
-"`Variables again`"
+"`Encore les variables`"
 
 "So we've setup our loadbalancer, and it works quite well. We grabbed variables from facts and used them to build the configuration. But Ansible also supports other kinds of variables. We already saw `ansible_host` in inventory, but now we'll use variables defined in `host_vars` and `group_vars` files."
 
@@ -15,13 +15,7 @@ run(`cp -r /tutorials/files/step-11/* .`)
 
 "We'll use variables to configure all these parameters."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Group vars`"
 
@@ -44,13 +38,7 @@ haproxy:\n\t
 
 "This is just a matter of taste. Complex vars can help group stuff logically. They can also, under some circumstances, merge subsequently defined keys (note however that this is not the default ansible behaviour). For now we'll just use simple variables."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
 
 "`Hosts vars`"
 
@@ -132,10 +120,4 @@ prompt {
 
 "C'est la fin de cette leçon."
 
-"Veuillez presser la touche \"`Enter`/`Entrée`\" pour continuer"
-prompt {
-    if command == "" {
-        expect (" ")
-        break
-    }
-}
+enter_to_continue
