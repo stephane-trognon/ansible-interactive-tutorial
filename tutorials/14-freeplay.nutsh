@@ -1,9 +1,9 @@
-lesson_name("Free play")
+lesson_name("Jeux libres")
 make_and_go_ws
 
-"This is not a lesson, rather an option to let you play with ansible!"
+"Ce n'est pas une leçon, mais plutôt une option pour vous permettre de jouer avec ansible dans cet environnement !"
 
-"Remember you can quit by typing `exit` or `done` once you're done!"
+"N'oubliez pas que vous pouvez quitter en tapant `exit` ou `done` quand vous avez terminé."
 
 prompt {
     if command == "done" {
