@@ -1,7 +1,7 @@
 lesson_name("Jeux libres")
 make_and_go_ws
 
-"Ce n'est pas une leçon, mais plutôt une option pour vous permettre de jouer avec ansible dans cet environnement !"
+"Cette activité pas une leçon mais plutôt un 'bac à sable' pour vous permettre de jouer avec ansible dans cet environnement !"
 
 "N'oubliez pas que vous pouvez quitter en tapant `exit` ou `done` quand vous avez terminé."
 
