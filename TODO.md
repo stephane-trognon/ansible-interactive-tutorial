@@ -13,3 +13,4 @@
 * [`tutorials/10-step-10.nutsh`](tutorials/10-step-10.nutsh)
   * module `template`
   * module `lineinfile`
+* ansible-lint dans l'image
