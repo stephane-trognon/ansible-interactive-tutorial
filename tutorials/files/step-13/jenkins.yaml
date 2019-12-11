@@ -1,7 +1,9 @@
 - hosts: jenkins
   vars:
-    jenkins_hostname: host0.example.org
-    jenkins_repo_key_url: http://pkg.jenkins.io/debian/jenkins.io.key
+    jenkins_hostname: "{{ ansible_hostname }}"
+    jenkins_repo_url: deb http://pkg.jenkins-ci.org/debian binary/
+    jenkins_repo_key_url: http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key
+    jenkins_java_options: ""
   roles:
     - role: geerlingguy.java
     - role: geerlingguy.jenkins
