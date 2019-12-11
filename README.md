@@ -58,9 +58,9 @@ Vous pouvez exécuter chaque leçon individuellement mais il est **fortement con
 
 `tutorial.sh` démarre quatre conteneurs docker en coulisses. Un pour exécuter le tutoriel lui-même et trois en tant que nœuds qui se comportent exactement comme des machines (virtuelles ou physiques) dans le tutoriel.
 
-**ansible.tutorial** est un conteneur de tutoriel Alpine Linux dans lequel ansible et [nutsh](https://github.com/turkenh/nutsh) (un canevas pour créer des tutoriels interactifs en ligne de commande) sont disponibles.
+**ansible.tutorial** est un conteneur de tutoriel Alpine Linux dans lequel ansible et [nutsh](https://github.com/turkenh/nutsh) (un canevas pour créer des tutoriels interactifs en ligne de commande) sont disponibles. On le trouve sur [https://hub.docker.com/repository/docker/goffinet/ansible-tutorial](https://hub.docker.com/repository/docker/goffinet/ansible-tutorial) avec le [Dockerfile](https://github.com/goffinet/ansible-interactive-tutorial/blob/master/images/ansible-tutorial/Dockerfile) dans ce même repo.
 
-**host0.example.org**, **host1.example.org** et **host2.example.org** sont les conteneurs basés sur Ubuntu 18.04 qui agissent comme des nœuds exploitables. Ces nœuds ont déjà été approvisionnés avec la clé ssh du conteneur **ansible.tutorial**. Ainsi, vous n'avez pas à vous occuper de l'installation des clés.
+**host0.example.org**, **host1.example.org** et **host2.example.org** sont les conteneurs basés sur Ubuntu 18.04 qui agissent comme des nœuds exploitables. Ces nœuds ont déjà été approvisionnés avec la clé ssh du conteneur **ansible.tutorial**. Ainsi, vous n'avez pas à vous occuper de l'installation des clés. Cette image est disponible sur [https://hub.docker.com/repository/docker/goffinet/ubuntu-1804-ansible-docker-host](https://hub.docker.com/repository/docker/goffinet/ubuntu-1804-ansible-docker-host) et le [Dockerfile](https://github.com/goffinet/ansible-interactive-tutorial/blob/master/images/ubuntu-1804-ansible-docker-host/Dockerfile) est dans ce repo.
 
 ### Port Mapping
 
