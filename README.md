@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/turkenh/ansible-interactive-tutorial.svg?branch=master)](https://travis-ci.org/turkenh/ansible-interactive-tutorial)
 
-Tutoriels interactifs sur Ansible
+Tutoriels interactifs sur Ansible en soutien au support de formation [https://iac.goffinet.org](https://iac.goffinet.org).
 
 ## Prérequis
 
