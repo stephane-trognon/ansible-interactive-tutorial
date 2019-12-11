@@ -1,6 +1,7 @@
 - hosts: jenkins
   vars:
     jenkins_hostname: host0.example.org
+    jenkins_repo_key_url: http://pkg.jenkins.io/debian/jenkins.io.key
   roles:
     - role: geerlingguy.java
     - role: geerlingguy.jenkins
