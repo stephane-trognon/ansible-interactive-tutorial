@@ -105,7 +105,7 @@ prompt {
 
 "Note : la directive `tags: ['deploy']` vous permet d'exécuter juste les tâches qui dispose de cette 'étiquette'. Cette fonctionnalité permet d'exécuter le playbook en partie seulement sur les tâches ainsi identifiées comme par exemple la mise à jour du site."
 
-"Voyons comment utiliser ce 'tag' `deploy` avec la commande suivante."
+"Voyons comment utiliser ce 'tag' `deploy` avec la commande suivante (option `--tags` ou `-t`) :"
 
 "*ansible-playbook -i hosts -l host1.example.org apache.yml -t deploy*"
 
