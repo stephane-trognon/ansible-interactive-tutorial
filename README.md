@@ -56,7 +56,7 @@ Vous pouvez exécuter chaque leçon individuellement mais il est **fortement con
 
 ### Conteneurs
 
-`tutorial.sh' démarre quatre conteneurs docker en coulisses. Un pour exécuter le tutoriel lui-même et trois en tant que nœuds qui se comportent exactement comme des machines (virtuelles ou physiques) dans le tutoriel.
+`tutorial.sh` démarre quatre conteneurs docker en coulisses. Un pour exécuter le tutoriel lui-même et trois en tant que nœuds qui se comportent exactement comme des machines (virtuelles ou physiques) dans le tutoriel.
 
 **ansible.tutorial** est un conteneur de tutoriel Alpine Linux dans lequel ansible et [nutsh](https://github.com/turkenh/nutsh) (un canevas pour créer des tutoriels interactifs en ligne de commande) sont disponibles.
 
