@@ -21,7 +21,7 @@ prompt {
 
 "Il y a 3 conteneurs Docker supplémentaires qui se comportent comme n'importe quel ordinateur et qui feront office de noeud Ansible à gérer tout au long de ce tutoriel."
 
-"Veuillez exécuter la commande suivante pour vérifier que ces 3 trois sont démarrés et accessibles :"
+"Veuillez exécuter la commande suivante pour vérifier que ces 3 trois hôtes ont démarrés et sont accessibles :"
 
 "*fping host{0,1,2}.example.org*"
 
