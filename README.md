@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/turkenh/ansible-interactive-tutorial.svg?branch=master)](https://travis-ci.org/turkenh/ansible-interactive-tutorial)
 
-Tutoriels interactifs sur Ansible en soutien au support de formation [https://iac.goffinet.org](https://iac.goffinet.org).
+Leçons interactives sur Ansible en soutien au support de formation [https://iac.goffinet.org](https://iac.goffinet.org).
 
 ## Prérequis
 
@@ -30,7 +30,7 @@ Vous pouvez aussi passer par [http://play-with-docker.com](http://play-with-dock
 
 ## Plus de détails
 
-### Tutorials
+### Leçons
 
 Ce projet est fondé sur [turkenh/ansible-interactive-tutorial](https://github.com/turkenh/ansible-interactive-tutorial) qui s'inspire largement du repo [leucos/ansible-tuto](https://github.com/leucos/ansible-tuto). Je l'ai adapté en français :
 
