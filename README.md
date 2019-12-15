@@ -55,7 +55,7 @@ Ce projet est fondé sur [turkenh/ansible-interactive-tutorial](https://github.c
 
 Vous pouvez exécuter chaque leçon individuellement mais il est **fortement conseillé de suivre l'ordre** car la plupart d'entre elles sont construites sur la précédente !
 
-J'ai ajouter une leçon 16) Exercices du support https://iac.goffinet.org qui prend en charge les exemples de ce support de formation mais sans interactivité.
+J'ai ajouté une leçon 16) Exercices du support https://iac.goffinet.org qui prend en charge les exemples de ce support de formation mais sans interactivité.
 
 ### Conteneurs
 
