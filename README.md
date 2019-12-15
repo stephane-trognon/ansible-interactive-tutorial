@@ -6,7 +6,7 @@ Leçons interactives sur Ansible en soutien au support de formation [https://iac
 
 ## Prérequis
 
-Le seul prérequis est **docker** (version 1.9+, testé avec la version 1.12+) :
+Le seul prérequis est **docker** (version 1.9+, testé avec la version 1.12+), Linux :
 
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
@@ -32,7 +32,7 @@ Vous pouvez aussi passer par [http://play-with-docker.com](http://play-with-dock
 
 ### Leçons
 
-Ce projet est fondé sur [turkenh/ansible-interactive-tutorial](https://github.com/turkenh/ansible-interactive-tutorial) qui s'inspire largement du repo [leucos/ansible-tuto](https://github.com/leucos/ansible-tuto). Je l'ai adapté en français :
+Ce projet est fondé sur [turkenh/ansible-interactive-tutorial](https://github.com/turkenh/ansible-interactive-tutorial) qui s'inspire largement du repo [leucos/ansible-tuto](https://github.com/leucos/ansible-tuto). Je l'ai adapté et traduit en français :
 
 ```
 1) Pour commencer
@@ -50,9 +50,12 @@ Ce projet est fondé sur [turkenh/ansible-interactive-tutorial](https://github.c
 13) Migration vers les rôles
 14) Utiliser des rôles Ansible Galaxy - Installer un serveur Jenkins
 15) Jeux libres
+16) Exercices du support https://iac.goffinet.org
 ```
 
 Vous pouvez exécuter chaque leçon individuellement mais il est **fortement conseillé de suivre l'ordre** car la plupart d'entre elles sont construites sur la précédente !
+
+J'ai ajouter une leçon 16) Exercices du support https://iac.goffinet.org qui prend en charge les exemples de ce support de formation mais sans interactivité.
 
 ### Conteneurs
 
