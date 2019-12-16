@@ -5,7 +5,7 @@ make_and_go_ws
 
 "Cette leçon vise à vous familiariser avec l'environnement."
 
-"Maitenant, vous êtes à l'intérieur d'un conteneur Docker dans lequel Ansible est installé."
+"Maintenant, vous êtes à l'intérieur d'un conteneur Docker dans lequel Ansible est installé."
 
 "Veuillez vérifier que `ansible` est installé en exécutant la commande suivante :"
 
