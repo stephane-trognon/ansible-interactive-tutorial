@@ -27,6 +27,7 @@ EXTRA_PORTS=( "8080" "30000" "443" )
 # +-----------+----------------+-------------------+
 
 DOCKER_IMAGETAG=${DOCKER_IMAGETAG:-latest}
+#DOCKER_HOST_IMAGE="goffinet/ubuntu-1604-ansible-docker-host:${DOCKER_IMAGETAG}"
 DOCKER_HOST_IMAGE="goffinet/ubuntu-1604-ansible-docker-host:${DOCKER_IMAGETAG}"
 TUTORIAL_IMAGE="goffinet/ansible-tutorial:${DOCKER_IMAGETAG}"
 
